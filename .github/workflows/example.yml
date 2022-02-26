@@ -1,0 +1,26 @@
+name: Publish slide made by Reveal.js
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Locate example slide
+        run:
+          mkdir -p build
+          cp example/slide.html example/custom.css build/
+      - name: Arrange Reveal.js assets
+        uses: ftnext/action-fetch-revealjs@main
+        with:
+          version: 4.2.1
+          dest_dir: build/reveal.js
+      - name: Publish on GitHub Pages
+        uses: ftnext/action-push-ghpages@v1.0.0
+        with:
+          build_dir: build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
