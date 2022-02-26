@@ -1,0 +1,4 @@
+build
+
+# Ignore Reveal.js assets (arranged by entrypoint.sh in development)
+example/reveal.js
