@@ -1,0 +1,20 @@
+name: "Fetch Reveal.js assets"
+description: "This action fetches Reveal.js assets and arranges them on the specified path."
+author: "nikkie"
+inputs:
+  version:
+    description: "Version of Reveal.js."
+    required: true
+  dest_dir:
+    description: "Path to the directory where the assets are located."
+    required: true
+runs:
+  using: composite
+  steps:
+  - run: |
+      ./entrypoint.sh ${INPUT_VERSION} ${INPUT_DEST_DIR}
+    env:
+      # workaround ref: https://github.com/actions/runner/issues/665#issuecomment-699481628
+      INPUT_VERSION: ${{ inputs.version }}
+      INPUT_DEST_DIR: ${{ inputs.dest_dir }}
+    shell: bash
