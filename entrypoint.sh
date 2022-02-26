@@ -4,7 +4,18 @@
 set -euo pipefail
 
 version=$1
-destDirAbsolutePath=$2
+destDirPath=$2
+
+scriptDirAbsolutePath=$(cd "$(dirname "$0")"; pwd)
+
+case "${destDirPath}" in
+  /*) destDirAbsolutePath="${destDirPath}"
+    ;;
+  *) destDirAbsolutePath="${scriptDirAbsolutePath}/${destDirPath}"
+    ;;
+esac
+
+echo "Try to arrange assets at ${destDirAbsolutePath}"
 
 if [ ! -e "${destDirAbsolutePath}" ]; then
   mkdir -p "${destDirAbsolutePath}"
