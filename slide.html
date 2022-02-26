@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="reveal.js/dist/reveal.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="reveal.js/dist/theme/sky.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="reveal.js/plugin/highlight/zenburn.css"
+    />
+    <link rel="stylesheet" type="text/css" href="custom.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-separator-vertical="^\r?\n\+\+\+\r?\n$">
+          <textarea data-template>
+# Demo slides
+ref: https://revealjs.com/markdown/
+
+---
+
+## Slide 1
+A paragraph with some text and a [link](http://hakim.se).
+
++++
+
+## Slide 1-2
+`+++` for vertical slide.
+
+---
+
+## Slide 2
+markup examples
+
++++
+
+### List
+
+- apple
+- banana
+
++++
+
+### Code
+
+```js [1-2|3|4]
+let a = 1;
+let b = 2;
+let c = x => 1 + 2 + x;
+c(3);
+```
+
+---
+
+# EOF
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        plugins: [RevealMarkdown, RevealHighlight],
+        margin: 0.0,
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: "none",
+        slideNumber: "c/t",
+      });
+    </script>
+  </body>
+</html>
