@@ -12,7 +12,7 @@ runs:
   using: composite
   steps:
   - run: |
-      ./entrypoint.sh ${INPUT_VERSION} ${INPUT_DEST_DIR}
+      ${GITHUB_ACTION_PATH}/entrypoint.sh ${INPUT_VERSION} ${INPUT_DEST_DIR}
     env:
       # workaround ref: https://github.com/actions/runner/issues/665#issuecomment-699481628
       INPUT_VERSION: ${{ inputs.version }}
