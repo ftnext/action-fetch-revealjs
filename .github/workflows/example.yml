@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - id: pwd
+        run: echo "::set-output name=path::$(pwd)"
       - name: Locate example slide
         run: |
           mkdir -p build
@@ -18,7 +20,7 @@ jobs:
         uses: ftnext/action-fetch-revealjs@main
         with:
           version: 4.2.1
-          dest_dir: build/reveal.js
+          dest_dir: ${{ steps.pwd.outputs.path }}/build/reveal.js
       - name: Publish on GitHub Pages
         uses: ftnext/action-push-ghpages@v1.0.0
         with:
