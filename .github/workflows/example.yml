@@ -11,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - id: pwd
-        run: echo "::set-output name=path::$(pwd)"
+        run: echo "path=$(pwd)" >> $GITHUB_OUTPUT
       - name: Locate example slide
         run: |
           mkdir -p build
